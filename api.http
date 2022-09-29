@@ -1,0 +1,16 @@
+POST http://localhost:3000/routes 
+Content-Type: application/json
+
+{
+  "title": "my route233",
+  "start": { "lat": 20, "lng": 1 },
+  "end": { "lat": 34, "lng": 4 }
+}
+
+###
+GET http://localhost:3000/routes
+Content-Type: application/json
+
+###
+GET http://localhost:3000/routes/196e418f-2770-40b3-8603-d36b3e2c6c86
+Content-Type: application/json

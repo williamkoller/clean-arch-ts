@@ -1,3 +1,5 @@
+import { randomUUID } from 'crypto';
+
 export type LatLng = {
   lat: number;
   lng: number;
@@ -11,8 +13,10 @@ export type RouteProps = {
 };
 
 export class Route {
+  public readonly id: string;
   public props: Required<RouteProps>;
-  constructor(props: RouteProps) {
+  constructor(props: RouteProps, id?: string) {
+    this.id = id || randomUUID();
     this.props = {
       ...props,
       points: props.points || [],
@@ -62,5 +66,12 @@ export class Route {
 
   private set points(value: LatLng[]) {
     this.props.points = value;
+  }
+
+  toJSON() {
+    return {
+      id: this.id,
+      ...this.props,
+    };
   }
 }
